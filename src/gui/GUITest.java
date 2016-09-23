@@ -7,7 +7,7 @@ public class GUITest {
 
     public static void main(String[] args) {
 
-        AstarWindow w = new AstarWindow("Test", 15, 15);
+        AStarWindow w = new AStarWindow("Test", 15, 15);
 
     }
 
