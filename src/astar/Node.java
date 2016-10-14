@@ -16,7 +16,22 @@ public class Node {
     }
 
     public int getCost() {
-        return tile.cost();
+        if(prev == null) {
+            return 0;
+        } else {
+            int thisTile = this.tile.cost();
+            int prevTile = prev.tile.cost();
+            int diff = thisTile - prevTile;
+            if (Math.abs(diff) > 3) {
+                return Integer.MAX_VALUE;
+            } else {
+                if (diff < 0) {
+                    return 1;
+                } else {
+                    return diff + 1;
+                }
+            }
+        }
     }
 
     public void setCurrentPath() {
