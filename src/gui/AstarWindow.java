@@ -6,11 +6,11 @@ import java.awt.*;
 /**
  * Created by Nick LaPosta on 9/22/2016.
  */
-public class AstarWindow extends JFrame {
+public class AStarWindow extends JFrame {
 
     public Tile[][] tiles;
 
-    public AstarWindow(String title, int x, int y) {
+    public AStarWindow(String title, int x, int y) {
         super(title);
         tiles = new Tile[x][y];
         this.setLayout(new GridLayout(x, y));
