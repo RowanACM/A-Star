@@ -16,6 +16,10 @@ public class Tile extends JPanel {
         this.setBackground(new Color(colorVar, colorVar, colorVar));
     }
 
+    public int cost() {
+        return cost;
+    }
+
     public void setCurrentPath() {
         this.setBackground(new Color(0, 255 - (21 * cost), 0));
     }
