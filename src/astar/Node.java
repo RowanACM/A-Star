@@ -16,16 +16,20 @@ public class Node {
     }
 
     public int getCost() {
-        int thisTile = this.tile.cost();
-        int prevTile = prev.tile.cost();
-        int diff = thisTile - prevTile;
-        if(Math.abs(diff) > 3) {
-            return Integer.MAX_VALUE;
+        if(prev == null) {
+            return 0;
         } else {
-            if(diff < 0) {
-                return 1;
+            int thisTile = this.tile.cost();
+            int prevTile = prev.tile.cost();
+            int diff = thisTile - prevTile;
+            if (Math.abs(diff) > 3) {
+                return Integer.MAX_VALUE;
             } else {
-                return diff + 1;
+                if (diff < 0) {
+                    return 1;
+                } else {
+                    return diff + 1;
+                }
             }
         }
     }
