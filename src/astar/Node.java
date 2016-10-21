@@ -15,6 +15,10 @@ public class Node {
         this.prev = prev;
     }
 
+    public int h() {
+        return 0;  //TODO: linear distance from endpoint
+    }
+
     public int getCost() {
         if(prev == null) {
             return 0;
@@ -32,6 +36,10 @@ public class Node {
                 }
             }
         }
+    }
+
+    public Node getPrev(){
+        return prev;
     }
 
     public void setCurrentPath() {
