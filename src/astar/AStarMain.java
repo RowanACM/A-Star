@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.PriorityQueue;
 
 /**
- * Created by lapost48 on 9/23/2016.
+ * Created by lapost48 & Sean Mulhall on 9/23/2016.
  */
 public class AStarMain {
 
@@ -18,9 +18,23 @@ public class AStarMain {
         ArrayList<Path> closed = new ArrayList<>();
 
         boolean finished = false;
-        while(!finished) {
+        while(frontier.size() != 0) {
+            Path current = frontier.poll();
 
+            if (current.head.getCost() == end){
+                return current;
+            }
+            
+            frontier.remove(current);
+            closed.add(current);
+            current.paintClosed();
 
+            for (://foreach neighbor of current
+                 ) {
+                
+            }
+
+            //TODO: EVERYTHING ELSE
 
         }
 
