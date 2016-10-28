@@ -42,6 +42,9 @@ public class Path implements Comparable<Path>{
     }
 
     public ArrayList<Path> getNeighbors( AStarWindow w ) { //imports w to use 2d array of tiles. may/may not be correct
+        ArrayList<Path> neighbors;
+
+
         return null; //TODO: return the 8 adjacent paths
     }
 

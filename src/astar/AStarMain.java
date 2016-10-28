@@ -1,6 +1,7 @@
 package astar;
 
 import gui.AStarWindow;
+import gui.Tile;
 
 import java.util.ArrayList;
 import java.util.PriorityQueue;
@@ -17,24 +18,33 @@ public class AStarMain {
         PriorityQueue<Path>  frontier = new PriorityQueue<>();
         ArrayList<Path> closed = new ArrayList<>();
 
+        Tile startTile = w.tiles[10][10];
+        Tile goalTile = w.tiles[4][4];
+        Node goal = new Node(goalTile,null);
+
+        frontier.add(new Path(startTile));
+
         boolean finished = false;
         while(!finished) {
             Path current = frontier.poll();
-            if (current.equals(goal)) {
+            if(current.getHead().equals(goal)) {
                finished = true;
             }
             else {
                 frontier.remove(current);
                 closed.add(current);
 
-                ArrayList<Path> neighbors = new ArrayList<>();
+                ArrayList<Path> neighbors;// = new ArrayList<>();
                 neighbors = current.getNeighbors(w);
 
-                for ( Path neighbor: neighbors ) {
-                    if (  closed.contains(neighbor) ) {
+                for(Path neighbor: neighbors) {
+                    if(!closed.contains(neighbor)) {
 
-                    } else {
-                        int tentative = current.score() + neighbor.score();
+                    //} else {
+                        //int tentative = current.score() + neighbor.getHead().getCost(); //?
+                        if(!frontier.contains(neighbor))
+                            frontier.add(neighbor);
+                       // else if(tentative >= )
                     }
 
                 }
