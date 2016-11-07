@@ -6,7 +6,7 @@ import java.awt.*;
 /**
  * Created by Nick LaPosta on 9/22/2016.
  */
-public class AStarWindow extends JFrame implements Singleton<AStarWindow> {
+public class AStarWindow extends JFrame {
 
 	private static final String TITLE = "A*";
     private static final int ROWS = 15;
@@ -15,7 +15,7 @@ public class AStarWindow extends JFrame implements Singleton<AStarWindow> {
 	public static AStarWindow window = new AStarWindow(TITLE, ROWS, COLS);
     public static Tile[][] tiles;
 
-	public static int[] getSize() {
+	public static int[] getTilesSize() {
 		int[] size = {ROWS, COLS};
 		return size;
 	}
