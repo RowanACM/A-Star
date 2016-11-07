@@ -12,7 +12,7 @@ public class AStarMain {
 
     public static void main(String[] args) {
 
-		int[] winSize = AStarWindow.getSize();
+		int[] winSize = AStarWindow.getTilesSize();
         Node.ROW_LIMIT = winSize[0];
         Node.COL_LIMIT = winSize[1];
 

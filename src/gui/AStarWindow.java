@@ -13,7 +13,6 @@ public class AStarWindow extends JFrame {
     private static final int COLS = 15;
 	
 	public static AStarWindow window = new AStarWindow(TITLE, ROWS, COLS);
-    public static Tile[][] tiles;
 
 	public static int[] getTilesSize() {
 		int[] size = {ROWS, COLS};
@@ -23,7 +22,9 @@ public class AStarWindow extends JFrame {
 	public static AStarWindow getInstance() {
 		return window;
 	}
-	
+
+    public Tile[][] tiles;
+
     private AStarWindow(String title, int row, int col) {
         super(title);
         tiles = new Tile[row][col];

@@ -76,9 +76,10 @@ public class Node {
             if(newLoc != null) {
 				int r = newLoc[0];
 				int c = newLoc[1];
-                neighbors.add(new Node(newLoc, AStarWindow.getInstance().tiles[r, c], this));
+                neighbors.add(new Node(newLoc, AStarWindow.getInstance().tiles[r][c], this));
 			}
         }
+        return neighbors;
     }
 
     public int getCost() {
