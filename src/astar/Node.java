@@ -7,13 +7,44 @@ import gui.Tile;
  */
 public class Node {
 
+    //enum
+    enum Direction {
+
+        //nw = (-1,-1)
+
+        Direction(int row, int col) {
+
+        }
+    }
+
     private Tile tile;
     private Node prev;
 
-    public Node(Tile tile, Node prev) {
+    public Node(int[] Location, Tile tile, Node prev) {
         this.tile = tile;
         this.prev = prev;
     }
+
+    // int[] newloc
+        //return null of col or row < 1
+    //newcol
+    //newrow
+    private int newCOl(int prevcol) {
+        //add to col dirff
+        //iff out of counds return -1
+        //return diff
+        return -1;
+    }
+
+    public ArrayList<Node> getNeighbors() {
+        ArrayList<Node> neighbors;
+
+        for(Direction dir : Direction.values())
+        {
+
+        }
+    }
+
 
     public int h() {
         return 0;  //TODO: linear distance from endpoint
@@ -38,8 +69,16 @@ public class Node {
         }
     }
 
+    public boolean equals(Node compared){
+        return tile == compared.getTile();
+    }
+
+    public Tile getTile() {
+        return tile;
+    }
+
     public Node getPrev(){
-        return prev;
+        return  prev;
     }
 
     public void setCurrentPath() {

@@ -35,7 +35,7 @@ public class AStarMain {
                 closed.add(current);
 
                 ArrayList<Path> neighbors;// = new ArrayList<>();
-                neighbors = current.getNeighbors(w);
+                neighbors = current.getNeighbors(w.tiles[][]);
 
                 for(Path neighbor: neighbors) {
                     if(!closed.contains(neighbor)) {

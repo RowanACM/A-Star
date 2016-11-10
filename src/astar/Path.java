@@ -13,8 +13,11 @@ public class Path implements Comparable<Path>{
 
     private Node head;
 
-    public Path(Tile start) {
-        head = new Node(start, null);
+    public Path(Tile start, int[] startlocation) {
+        head = new Node(startLocation, start, null);
+    }
+    private Path(Node head) {
+        this.head = head;
     }
 
     public int score() {
@@ -41,9 +44,9 @@ public class Path implements Comparable<Path>{
         }
     }
 
-    public ArrayList<Path> getNeighbors( AStarWindow w ) { //imports w to use 2d array of tiles. may/may not be correct
-        ArrayList<Path> neighbors;
+    public ArrayList<Path> getNeighbors( ) {
 
+                //put this in node, then in this method, make the arraylist of nodes into list of paths
 
         return null; //TODO: return the 8 adjacent paths
     }
