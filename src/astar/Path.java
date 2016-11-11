@@ -9,11 +9,13 @@ public class Path {
 
     Node head;
 
-    public Path(Tile start) {
-        head = new Node(start, null);
+    public Path(Tile startTile, int[] startLocation) {
+        head = new Node(startLocation, startTile, null);
     }
 
-
+    private Path(Node head) {
+        this.head = head;
+    }
 
     //////////////////////////////////
     //  Color Modification Methods  //
