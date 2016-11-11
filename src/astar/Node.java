@@ -1,7 +1,7 @@
 package astar;
 
-import gui.AStarWindow;
-import gui.Tile;
+import gui.*;
+
 import java.util.ArrayList;
 
 /**
@@ -10,51 +10,60 @@ import java.util.ArrayList;
  */
 public class Node {
 
-    //enum
+    public static int ROW_LIMIT = 0;
+    public static int COL_LIMIT = 0;
+
     enum Direction {
+        N(-1, 0),
+        NE(-1, 1),
+        E(0, 1),
+        SE(1, 1),
+        S(1, 0),
+        SW(1, -1),
+        W(0, -1),
+        NW(-1, -1);
 
-
-        n(-1,0),
-        ne(-1,1),
-        e(0,1),
-        se(1,1),
-        s(1,0),
-        sw(1,-1),
-        w(0,-1),
-        nw(-1,-1);
-
-        int rodiff;
-        int codiff;
+        int rowDif;
+        int colDif;
         Direction(int row, int col) {
-            rodiff = row;
-            codiff = col;
-            
+            rowDif = row;
+            colDif = col;
         }
-         int[] newLoc(int[] location){
-             int r = newRow(location[0]);
-             int c = newCol(location[1]);
-             if(r >= 1 && c >= 1 && r < Node.ROWLIM && c < Node.COLLIM) {
-                 int[] result = {r,c};
-                 return  result;
-             } else
-                 return null;
-         }
 
-        private int newCol(int prevcol) {
-            return prevcol + codiff;
+        public int[] newLoc(int[] prevLoc) {
+            int newRow = newRow(prevLoc[0]);
+            int newCol = newCol(prevLoc[1]);
+            if(newRow < 1 || newCol < 1)
+                return null;
+            if(newRow >= Node.ROW_LIMIT || newCol >= Node.COL_LIMIT)
+                return null;
+            int[] newLoc = {newRow, newCol};
+            return newLoc;
         }
-        private int newRow(int prevrow) {
-            return prevrow + rodiff;
+
+        private int newCol(int prevCol) {
+            int newCol = prevCol + colDif;
+            if(newCol >= Node.COL_LIMIT)
+                return -1;
+            return newCol;
+        }
+
+        private int newRow(int prevRow) {
+            int newRow = prevRow + rowDif;
+            if(newRow < 0)
+                return -1;
+            return newRow;
         }
     }
 
-    public static int ROWLIM = AStarWindow.tiles.length;
-    public static int COLLIM = AStarWindow.tiles[0].length;
-
+    private int[] location;
     private Tile tile;
     private Node prev;
-    private int[] location;
 
+
+    public  Node (int[] startLocation, Tile tile) {
+        new Node(startLocation, tile, null);
+    }
     public Node(int[] startLocation, Tile tile, Node prev) {
         location =startLocation;
         this.tile = tile;
@@ -66,14 +75,11 @@ public class Node {
 
     public ArrayList<Node> getNeighbors() {
         ArrayList<Node> neighbors = new ArrayList<>();
-
         for(Direction d : Direction.values()) {
             int[] loc = d.newLoc(location);
-
             if(loc != null)
                 neighbors.add(new Node(loc, AStarWindow.getInstance().tiles[loc[0]][loc[1]], this));
         }
-
         return neighbors;
     }
 
@@ -99,18 +105,6 @@ public class Node {
                 }
             }
         }
-    }
-
-    public boolean equals(Node compared){
-        return tile == compared.getTile();
-    }
-
-    public Tile getTile() {
-        return tile;
-    }
-
-    public Node getPrev(){
-        return  prev;
     }
 
     public void setCurrentPath() {

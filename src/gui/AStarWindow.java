@@ -9,17 +9,27 @@ import java.awt.*;
  */
 public class AStarWindow extends JFrame {
 
-    private static final String TITLE = "A*";
+	private static final String TITLE = "A*";
     private static final int ROWS = 15;
     private static final int COLS = 15;
-    public static Tile[][] tiles;
 
-    public static AStarWindow window = new AStarWindow(TITLE, ROWS, COLS);
+	public static AStarWindow window = new AStarWindow(TITLE, ROWS, COLS);
 
-    private AStarWindow(String title, int x, int y) {
+	public static int[] getTilesSize() {
+		int[] size = {ROWS, COLS};
+		return size;
+	}
+
+	public static AStarWindow getInstance() {
+		return window;
+	}
+
+    public Tile[][] tiles;
+
+    private AStarWindow(String title, int row, int col) {
         super(title);
-        tiles = new Tile[x][y];
-        this.setLayout(new GridLayout(x, y));
+        tiles = new Tile[row][col];
+        this.setLayout(new GridLayout(row, col));
         buildTiles();
         this.setVisible(true);
         this.setSize(800, 800);
@@ -27,24 +37,15 @@ public class AStarWindow extends JFrame {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
-    public static AStarWindow getInstance() {
-        return window;
-    }
-
-    public static int[] getTilesSize() {
-        int[] size = {ROWS,COLS};
-        return size;
-    }
-
     public Tile getTile(int[] location) {
         return tiles[location[0]][location[1]];
     }
 
     private void buildTiles() {
-        for(int i = 0; i < tiles.length; i++) {
-            for(int j = 0; j < tiles[i].length; j++) {
-                tiles[i][j] = new Tile((int) (Math.random() * 4) + 1);
-                this.add(tiles[i][j]);
+        for(int row = 0; row < tiles.length; row++) {
+            for(int col = 0; col < tiles[row].length; col++) {
+                tiles[row][col] = new Tile((int) (Math.random() * 4) + 1);
+                this.add(tiles[row][col]);
             }
         }
     }

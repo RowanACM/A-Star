@@ -1,6 +1,5 @@
 package astar;
 
-import gui.AStarWindow;
 import gui.Tile;
 
 import java.lang.reflect.Array;
