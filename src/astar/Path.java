@@ -3,17 +3,19 @@ package astar;
 import gui.AStarWindow;
 import gui.Tile;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 
 /**
  * Created by lapost48 on 9/23/2016.
+ * modified by aMelchior
  */
 public class Path implements Comparable<Path>{
 
     private Node head;
 
-    public Path(Tile start, int[] startlocation) {
+    public Path(Tile start, int[] startLocation) {
         head = new Node(startLocation, start, null);
     }
     private Path(Node head) {
@@ -32,8 +34,8 @@ public class Path implements Comparable<Path>{
     }
 
     public int compareTo(Path compared) {
-        int myCost = head.getCost() + head.h();
-        int compCost = compared.getHead().getCost() + compared.getHead().getCost();
+        int myCost = score();
+        int compCost = compared.score();// + compared.getHead().getCost();
 
         if (myCost > compCost) {
             return 1;
@@ -45,10 +47,12 @@ public class Path implements Comparable<Path>{
     }
 
     public ArrayList<Path> getNeighbors( ) {
-
-                //put this in node, then in this method, make the arraylist of nodes into list of paths
-
-        return null; //TODO: return the 8 adjacent paths
+        ArrayList<Path> neighbors= new ArrayList<>();
+        ArrayList<Node> nodes= head.getNeighbors();
+        for(Node n : nodes) {
+            neighbors.add(new Path(n));
+        }
+        return neighbors;
     }
 
     public Node getHead() {
