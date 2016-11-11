@@ -8,7 +8,7 @@ import java.util.PriorityQueue;
 
 /**
  * Created by lapost48 on 9/23/2016.
- * modified by aMelchior
+ * modified by aMelchior (aidan)
  */
 public class AStarMain {
 
