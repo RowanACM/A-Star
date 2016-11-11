@@ -30,6 +30,10 @@ public class AStarMain {
         boolean finished = false;
         while(!finished) {
             Path current = frontier.poll();
+            current.paintClosed();
+            current.paintFrontier();
+            current.paintCurrent();
+
             if(current.getHead().equals(goal)) {
                finished = true;
             }
@@ -40,7 +44,8 @@ public class AStarMain {
 
                 for(Path neighbor: neighbors) {
                     if(!closed.contains(neighbor) && !frontier.contains(neighbor)) {
-                            frontier.add(neighbor);
+                        frontier.add(neighbor);
+                        current.paintFrontier();
                     }
 
                 }
