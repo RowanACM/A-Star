@@ -2,6 +2,7 @@ package gui;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Random;
 
 /**
  * Created by Nick LaPosta on 9/22/2016.
@@ -11,6 +12,7 @@ public class AStarWindow extends JFrame {
 	private static final String TITLE = "A*";
     private static final int ROWS = 15;
     private static final int COLS = 15;
+
 	
 	public static AStarWindow window = new AStarWindow(TITLE, ROWS, COLS);
 
@@ -47,6 +49,13 @@ public class AStarWindow extends JFrame {
                 this.add(tiles[row][col]);
             }
         }
-    }	
+    }
+
+    public static int[] getRandLocation()
+    {
+        Random rand = new Random();
+        int[] location = {rand.nextInt(ROWS),rand.nextInt(COLS)};
+        return location;
+    }
 
 }

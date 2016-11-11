@@ -101,6 +101,10 @@ public class Node {
         }
     }
 
+    public int[] getLocation(){
+        return location;
+    }
+
     public void setCurrentPath() {
         tile.setCurrentPath();
     }

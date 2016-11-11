@@ -32,4 +32,5 @@ public class Tile extends JPanel {
         this.setBackground(new Color(255 - (21 * cost), 0, 0));
     }
 
+    //TODO Create getneighbors
 }

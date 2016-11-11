@@ -19,10 +19,28 @@ public class AStarMain {
         PriorityQueue<Path>  frontier = new PriorityQueue<>();
         ArrayList<Path> closed = new ArrayList<>();
         int[] startLocation = {0, 0};
+        int[] endLocation = AStarWindow.getRandLocation();
+
         Path current = new Path(AStarWindow.getInstance().getTile(startLocation), startLocation);
+
+        //set start tile and end tile before
+        //moving into this loop so we have a clear goal
+
 
         boolean finished = false;
         while(!finished) {
+
+            current = frontier.pull();
+
+            if (current.head.getLocation() == endLocation)
+            {
+                finished = true;
+            }
+
+            frontier.remove(current);
+            closed.add(current);
+
+            for()
 
 
             for(Path p: closed)
