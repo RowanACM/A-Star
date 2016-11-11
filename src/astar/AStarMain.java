@@ -24,33 +24,28 @@ public class AStarMain {
         //Tile goalTile = AStarWindow.tiles[4][4];
         int[] goalLoc= {4,4};
         int[] startLoc = {10,10};
-        Node goal = new Node(goalLoc, goalTile,null);
+        Node goal = new Node(goalLoc, AStarWindow.getInstance().getTile(goalLoc),null);
 
-        frontier.add(new Path(startTile, startLoc));
+        Path current = new Path(AStarWindow.getInstance().getTile(startLoc), startLoc);
+        frontier.add(current);
 
         boolean finished = false;
         while(!finished) {
             current = frontier.poll();
 
 
-            if(current.getHead().equals(goal)) {
+            if(current.getHead().equals(goal))
                finished = true;
-            }
             else {
                 closed.add(current);
 
                 ArrayList<Path> neighbors = current.getNeighbors();
 
                 for(Path neighbor: neighbors) {
-                    if(!closed.contains(neighbor) && !frontier.contains(neighbor)) {
+                    if(!closed.contains(neighbor) && !frontier.contains(neighbor))
                         frontier.add(neighbor);
-                        current.paintFrontier();
-                    }
-
                 }
-
             }
-
             for(Path p: closed)
                 p.paintClosed();
             for(Path p: frontier)

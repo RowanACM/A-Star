@@ -26,6 +26,8 @@ public class AStarWindow extends JFrame {
 
     public Tile[][] tiles;
 
+
+
     private AStarWindow(String title, int row, int col) {
         super(title);
         tiles = new Tile[row][col];

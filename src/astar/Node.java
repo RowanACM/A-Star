@@ -69,8 +69,9 @@ public class Node {
         this.tile = tile;
         this.prev = prev;
     }
-    public  Node (int[] startLocation, Tile tile) {
-        new Node(startLocation, tile, null);
+
+    public Node getPrev(){
+        return prev;
     }
 
     public ArrayList<Node> getNeighbors() {
