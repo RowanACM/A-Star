@@ -105,6 +105,10 @@ public class Node {
         return location;
     }
 
+    public Node getPrev(){
+        return this.prev;
+    }
+
     public void setCurrentPath() {
         tile.setCurrentPath();
     }

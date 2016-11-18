@@ -30,9 +30,11 @@ public class AStarMain {
         boolean finished = false;
         while(!finished) {
 
-            current = frontier.pull();
+            if ( frontier.size() != 0) {
+                current = frontier.poll();
+            }
 
-            if (current.head.getLocation() == endLocation)
+            if ( current.head.getLocation().equals(endLocation) )
             {
                 finished = true;
             }
@@ -40,13 +42,19 @@ public class AStarMain {
             frontier.remove(current);
             closed.add(current);
 
-            for()
+            ArrayList<Path> neighbors = current.getNeighbors();
 
+            for(Path p: neighbors) {
 
-            for(Path p: closed)
-                p.paintClosed();
+                if (!closed.contains(p) && !frontier.contains(p)) {
+                    frontier.add(p);
+                }
+
+            }
             for(Path p: frontier)
                 p.paintFrontier();
+            for(Path p: closed)
+                p.paintClosed();
             current.paintCurrent();
             try {
                 Thread.sleep(500);
