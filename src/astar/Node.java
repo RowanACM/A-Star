@@ -5,7 +5,8 @@ import gui.*;
 import java.util.ArrayList;
 
 /**
- * Created by Nick LaPosta on 9/23/2016.
+ * Created by lapost48 on 9/23/2016.
+ * modified by aMelchior
  */
 public class Node {
 
@@ -59,31 +60,39 @@ public class Node {
     private Tile tile;
     private Node prev;
 
-    public Node(int[] startLocation, Tile tile) {
+
+    public  Node (int[] startLocation, Tile tile) {
         new Node(startLocation, tile, null);
     }
-
-    public Node(int[] location, Tile tile, Node prev) {
-        this.location = location;
+    public Node(int[] startLocation, Tile tile, Node prev) {
+        location =startLocation;
         this.tile = tile;
         this.prev = prev;
     }
 
+    public Node getPrev(){
+        return prev;
+    }
+
     public ArrayList<Node> getNeighbors() {
         ArrayList<Node> neighbors = new ArrayList<>();
-        for(Direction dir: Direction.values()) {
-            int[] newLoc = dir.newLoc(location);
-            if(newLoc != null) {
-				int r = newLoc[0];
-				int c = newLoc[1];
-                neighbors.add(new Node(newLoc, AStarWindow.getInstance().tiles[r][c], this));
-			}
+        for(Direction d : Direction.values()) {
+            int[] loc = d.newLoc(location);
+            if(loc != null)
+                neighbors.add(new Node(loc, AStarWindow.getInstance().tiles[loc[0]][loc[1]], this));
         }
         return neighbors;
     }
 
+
+    public int h() {
+        return 0;  //TODO: linear distance from endpoint
+    }
+
     public int getCost() {
-        if(prev != null) {
+        if(prev == null) {
+            return 0;
+        } else {
             int thisTile = this.tile.cost();
             int prevTile = prev.tile.cost();
             int diff = thisTile - prevTile;
@@ -96,8 +105,6 @@ public class Node {
                     return diff + 1;
                 }
             }
-        } else {
-            return 0;
         }
     }
 
