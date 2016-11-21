@@ -84,6 +84,9 @@ public class Node {
         return neighbors;
     }
 
+    public int[] getLocation() {
+        return location;
+    }
 
     public int h() {
         return 0;  //TODO: linear distance from endpoint
