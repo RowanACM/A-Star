@@ -22,15 +22,15 @@ public class Tile extends JPanel {
     }
 
     public void setCurrentPath() {
-        this.setBackground(new Color(0, 255 - (21 * cost), 0));
+        this.setBackground(new Color(0, 255 - (21 * (4 - cost)), 0));
     }
 
     public void setFrontier() {
-        this.setBackground(new Color(255 - (21 * cost), 255 - (21 * cost), 0));
+        this.setBackground(new Color(255 - (21 * (4 - cost)), 255 - (21 * (4 - cost)), 0));
     }
 
     public void setClosed() {
-        this.setBackground(new Color(255 - (21 * cost), 0, 0));
+        this.setBackground(new Color(255 - (21 * (4 - cost)), 0, 0));
     }
 
 }
