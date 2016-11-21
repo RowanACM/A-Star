@@ -21,6 +21,7 @@ public class Path implements Comparable<Path>{
         this.head = head;
     }
 
+    //*
     public int score() {
         return score(head);
     }
@@ -31,10 +32,11 @@ public class Path implements Comparable<Path>{
             return current.getCost() + score(current.getPrev());
         }
     }
+    //*/
 
     public int compareTo(Path compared) {
-        int myCost = score();
-        int compCost = compared.score();// + compared.getHead().getCost();
+        int myCost = score()//head.getCost();
+        int compCost = compared.score();//compared.head.getCost();// + compared.getHead().getCost();
 
         if (myCost > compCost) {
             return 1;
@@ -47,11 +49,16 @@ public class Path implements Comparable<Path>{
 
     public ArrayList<Path> getNeighbors( ) {
         ArrayList<Path> neighbors= new ArrayList<>();
-        ArrayList<Node> nodes= head.getNeighbors();
-        for(Node n : nodes) {
+        for(Node n : head.getNeighbors()) {
             neighbors.add(new Path(n));
         }
         return neighbors;
+    }
+
+    public boolean equals(Object p) {
+        int[] thisLoc = head.getLocation();
+        int[] pLoc = ((Path)p).getHead().getLocation();
+        return pLoc[0] == thisLoc[0] && pLoc[1] == thisLoc[1];
     }
 
     public Node getHead() {
@@ -63,24 +70,32 @@ public class Path implements Comparable<Path>{
     //////////////////////////////////
 
     public void paintCurrent() {
-        Node realHead = head;
-        while(head != null)
-            head.setCurrentPath();
-        head = realHead;
+        Node curr = head;
+        while (curr != null) {
+            curr.setCurrentPath();
+            curr = curr.getPrev();
+        }
     }
 
     public void paintFrontier() {
-        Node realHead = head;
-        while(head != null)
-            head.setFrontier();
-        head = realHead;
+        Node curr = head;
+        while(curr != null) {
+            curr.setFrontier();
+            curr = curr.getPrev();
+        }
     }
 
     public void paintClosed() {
-        Node realHead = head;
-        while(head != null)
-            head.setClosed();
-        head = realHead;
+        Node curr = head;
+        while(curr != null) {
+            curr.setClosed();
+            curr = curr.getPrev();
+        }
+    }
+
+    public String toString() {
+        int[] loc = head.getLocation();
+        return "[" + loc[0] + ", " + loc[1] + "]";
     }
 
 }
