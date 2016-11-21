@@ -22,7 +22,7 @@ public class AStarMain {
 
         //Tile startTile = AStarWindow.tiles[10][10];
         //Tile goalTile = AStarWindow.tiles[4][4];
-        int[] goalLoc= {4,4};
+        int[] goalLoc= {4,7};
         int[] startLoc = {10,10};
         Node goal = new Node(goalLoc, AStarWindow.getInstance().getTile(goalLoc),null);
 
@@ -32,11 +32,15 @@ public class AStarMain {
         boolean finished = false;
         while(!finished) {
             current = frontier.poll();
+            //
 
-
-            if(current.getHead().equals(goal))
-               finished = true;
+            int[] currLoc = current.getHead().getLocation();
+            if(currLoc[0] == goalLoc[0] && currLoc[1] == goalLoc[1]) {
+                finished = true;
+              //  System.out.println("finished");
+            }
             else {
+
                 closed.add(current);
 
                 ArrayList<Path> neighbors = current.getNeighbors();
@@ -45,16 +49,24 @@ public class AStarMain {
                     if(!closed.contains(neighbor) && !frontier.contains(neighbor))
                         frontier.add(neighbor);
                 }
+
             }
-            for(Path p: closed)
-                p.paintClosed();
+
             for(Path p: frontier)
                 p.paintFrontier();
+            for(Path p: closed) {
+                p.paintClosed();
+                System.out.println(p);
+            }
+            System.out.println("c" + current + "\n----------------------------------------");
             current.paintCurrent();
+            //*
             try {
+                //System.out.println("sleeping");
                 Thread.sleep(500);
+                //System.out.println("done sleeping");
             } catch(Exception e) {}
-
+            //*/
 
         }
 
