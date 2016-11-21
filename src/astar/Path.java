@@ -23,7 +23,7 @@ public class Path implements Comparable<Path>{
 
     //*
     public int score() {
-        return score(head);
+        return score(head) + head.h(); //adds heuristic value
     }
     public int score(Node current) {
         if (current.getPrev() == null) {
@@ -35,8 +35,8 @@ public class Path implements Comparable<Path>{
     //*/
 
     public int compareTo(Path compared) {
-        int myCost = score()//head.getCost();
-        int compCost = compared.score();//compared.head.getCost();// + compared.getHead().getCost();
+        int myCost = score();//head.getCost();
+        int compCost = compared.score() ;//compared.head.getCost();// + compared.getHead().getCost();
 
         if (myCost > compCost) {
             return 1;
