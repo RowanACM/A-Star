@@ -12,6 +12,9 @@ public class AStarWindow extends JFrame {
     private static final int ROWS = 15;
     private static final int COLS = 15;
 
+    public static int[] goalLoc= {4,7};
+    public static  int[] startLoc = {10,10};
+
 	public static AStarWindow window = new AStarWindow(TITLE, ROWS, COLS);
 
 	public static int[] getTilesSize() {

@@ -89,7 +89,21 @@ public class Node {
     }
 
     public int h() {
-        return 0;  //TODO: linear distance from endpoint
+        int row2 = AStarWindow.goalLoc[0];
+        int col2 = AStarWindow.goalLoc[1];
+
+        System.out.println("heuristic" + "\n\t"
+                + location[0] + "," + location[1] + "to " + row2 + "," + col2
+                + " is " + Math.sqrt((location[0] - row2)*(location[0] - row2)
+                + (location[1] - col2)*(location[1] - col2)));
+
+        double tempDistance = Math.sqrt((location[0] - row2)*(location[0] - row2)
+                                      + (location[1] - col2)*(location[1] - col2));
+        tempDistance += .5; //rounding up
+        return (int)tempDistance + 5; //adds a value to make heuristic more impactful
+
+        //distance = sqrt(sq(x2-x1) + sq(y2-y1))
+       // return 0;
     }
 
     public int getCost() {
