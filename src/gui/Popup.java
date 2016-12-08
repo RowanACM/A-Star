@@ -3,6 +3,8 @@ import java.awt.event.*;
 import javax.swing.*;
 
 /**
+ * Create popup for ASTAR program
+ * allows user to chose whether to travel using A* or Dijkstra's algorithm
  * Created by Aidan melchior on 12/7/2016.
  */
 public class Popup extends JPanel implements ActionListener{
@@ -12,8 +14,6 @@ public class Popup extends JPanel implements ActionListener{
 
     public Popup()
     {
-        //final JFrame frame = new JFrame();
-
         astar_option = new JButton("A*");
         astar_option.setActionCommand("A*");
         astar_option.setToolTipText("I want to use the A* algorithm");
@@ -26,16 +26,7 @@ public class Popup extends JPanel implements ActionListener{
 
         add(astar_option);
         add(dijkstras_option);
-        //pack();
-        //setVisible(true);
 
-        //dijkstras_option.addActionListener(new java.awt.event.ActionListener() {
-        //    public void actionPerformed(java.awt.event.ActionEvent evt) {
-         //       AStarWindow.isAStar = false;
-         //       AStarWindow.waiting = false;
-         //       dispose();
-        //    }
-        //});
 
     }
 
@@ -43,7 +34,6 @@ public class Popup extends JPanel implements ActionListener{
         if(e.getActionCommand().equals("A*")) {
             AStarWindow.isAStar = true;
             AStarWindow.waiting = false;
-           // System.out.println(AStarWindow.isAStar);
             System.out.println("ok! we're doing " + e.getActionCommand());
             frame.dispose();
         } else {
@@ -55,7 +45,6 @@ public class Popup extends JPanel implements ActionListener{
     }
 
     public static void create() {
-        //System.out.println(AStarWindow.isAStar);
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
