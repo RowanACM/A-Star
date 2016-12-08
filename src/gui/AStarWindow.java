@@ -12,12 +12,13 @@ public class AStarWindow extends JFrame {
     private static final int ROWS = 15;
     private static final int COLS = 15;
 
-    public static int[] goalLoc= {4,7};
-    public static  int[] startLoc = {10,10};
+    public static int[] goalLoc= {1,1};
+    public static  int[] startLoc = {13,13};
 
 	public static AStarWindow window = new AStarWindow(TITLE, ROWS, COLS);
 
 	public static int[] getTilesSize() {
+
 		int[] size = {ROWS, COLS};
 		return size;
 	}
@@ -35,6 +36,7 @@ public class AStarWindow extends JFrame {
         tiles = new Tile[row][col];
         this.setLayout(new GridLayout(row, col));
         buildTiles();
+        tiles[goalLoc[0]][goalLoc[1]].setGoal();
         this.setVisible(true);
         this.setSize(800, 800);
         this.setResizable(false);
@@ -49,6 +51,7 @@ public class AStarWindow extends JFrame {
         for(int row = 0; row < tiles.length; row++) {
             for(int col = 0; col < tiles[row].length; col++) {
                 tiles[row][col] = new Tile((int) (Math.random() * 4) + 1);
+                //tiles[row][col] = new Tile( 1); //flat version
                 this.add(tiles[row][col]);
             }
         }

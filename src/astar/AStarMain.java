@@ -20,7 +20,6 @@ public class AStarMain {
         PriorityQueue<Path>  frontier = new PriorityQueue<>();
         ArrayList<Path> closed = new ArrayList<>();
 
-       // Node goal = new Node(AStarWindow.goalLoc, AStarWindow.getInstance().getTile(AStarWindow.goalLoc),null);
 
         Path current = new Path(AStarWindow.getInstance().getTile(AStarWindow.startLoc), AStarWindow.startLoc);
         frontier.add(current);
@@ -28,12 +27,11 @@ public class AStarMain {
         boolean finished = false;
         while(!finished) {
             current = frontier.poll();
-            //
+
 
             int[] currLoc = current.getHead().getLocation();
             if(currLoc[0] == AStarWindow.goalLoc[0] && currLoc[1] == AStarWindow.goalLoc[1]) {
                 finished = true;
-              //  System.out.println("finished");
             }
             else {
 
@@ -58,9 +56,7 @@ public class AStarMain {
             current.paintCurrent();
             //*
             try {
-                //System.out.println("sleeping");
                 Thread.sleep(500);
-                //System.out.println("done sleeping");
             } catch(Exception e) {}
             //*/
 

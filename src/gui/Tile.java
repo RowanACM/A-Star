@@ -33,4 +33,5 @@ public class Tile extends JPanel {
         this.setBackground(new Color(255 - (21 * (4 - cost)), 0, 0));
     }
 
+    public void setGoal() { this.setBackground(new Color(cost * 63, cost*63, 255));}
 }
