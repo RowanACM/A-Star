@@ -1,6 +1,7 @@
 package astar;
 
 import gui.AStarWindow;
+import gui.Popup;
 
 import java.util.ArrayList;
 import java.util.PriorityQueue;
@@ -20,6 +21,16 @@ public class AStarMain {
         PriorityQueue<Path>  frontier = new PriorityQueue<>();
         ArrayList<Path> closed = new ArrayList<>();
 
+        Popup.create();
+       // while(true) {
+         //   if(!AStarWindow.waiting) {
+         //       System.out.println("finished waiting");
+         //       break;
+        //    }
+        //}
+        try {
+            Thread.sleep(5000);     //temporary, must make a decision before 5 seconds is over.
+        } catch(Exception e) {}     //defaults to A*
 
         Path current = new Path(AStarWindow.getInstance().getTile(AStarWindow.startLoc), AStarWindow.startLoc);
         frontier.add(current);

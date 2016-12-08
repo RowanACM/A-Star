@@ -12,6 +12,8 @@ public class AStarWindow extends JFrame {
     private static final int ROWS = 15;
     private static final int COLS = 15;
 
+    public static boolean waiting = true;
+    public static boolean isAStar = true;
     public static int[] goalLoc= {1,1};
     public static  int[] startLoc = {13,13};
 
@@ -56,5 +58,7 @@ public class AStarWindow extends JFrame {
             }
         }
     }
+
+
 
 }

@@ -1,5 +1,6 @@
 package astar;
 
+import gui.AStarWindow;
 import gui.Tile;
 
 import java.lang.reflect.Array;
@@ -23,7 +24,10 @@ public class Path implements Comparable<Path>{
 
     //*
     public int score() {
-        return score(head) + head.h(); //adds heuristic value
+        if(AStarWindow.isAStar)
+            return score(head) + head.h(); //adds heuristic value
+        else
+            return score(head);
     }
     private int score(Node current) {
         if (current.getPrev() == null) {
